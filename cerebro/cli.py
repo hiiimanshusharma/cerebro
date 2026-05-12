@@ -1,5 +1,5 @@
 import argparse
-from cerebro.core.analyzer import PatternAnalyzer
+from cerebro.core.governor import Governor
 from cerebro.core.generator import PatternGenerator
 from cerebro.core.validator import PatternValidator
 from cerebro.core.store import PatternStore
@@ -10,22 +10,23 @@ def main():
     parser.add_argument("--target", type=str, help="Target name for generation")
     args = parser.parse_args()
 
-    print("🚀 Starting Cerebro Orchestrator...")
+    print("🚀 Starting Cerebro Governor...")
 
-    # 1. Discovery & Orchestration
-    analyzer = PatternAnalyzer(args.root)
-    potential_patterns = analyzer.find_potential_patterns()
+    # 1. Initialize the Governor
+    governor = Governor(args.root)
 
-    if not potential_patterns:
-        print("❌ No patterns discovered.")
+    # 2. Orchestrate Discovery, Study, and Synthesis
+    # The Governor manages the specialized agents internally
+    synthesized_patterns = governor.orchestrate_pattern_discovery()
+
+    if not synthesized_patterns:
+        print("❌ No patterns discovered through agentic synthesis.")
         return
 
-    for pattern_name, paths in potential_patterns.items():
-        print(f"\n🔍 Analyzing {pattern_name} pattern group...")
-        # This is where the "Agentic Synthesis" happens
-        synthesis = analyzer.analyze_pattern_group(paths)
+    for pattern_name, synthesis in synthesized_patterns.items():
+        print(f"\n✅ Synthesized pattern group: [{pattern_name}]")
 
-        # Store the result
+        # Store the formal synthesis
         store = PatternStore()
         store.save_pattern(pattern_name, synthesis)
 
@@ -36,9 +37,9 @@ def main():
 
             validator = PatternValidator()
             if validator.validate(code, synthesis):
-                print("\n--- Generated Code ---\n")
+                print("\n--- Agentically Generated Code ---\n")
                 print(code)
-                print("\n----------------------")
+                print("\n----------------------------------")
 
 if __name__ == "__main__":
     main()

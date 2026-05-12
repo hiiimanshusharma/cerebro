@@ -41,7 +41,7 @@ python3 -m cerebro.cli --root . --target "UserPaymentService"
 
 ## 🔍 How it Works
 
-1. **Scan**: Cerebro looks for files ending in common suffixes like `Service`, `Repository`, or `Controller`.
-2. **Analyze**: It groups these files and creates a "Study Request" specifying extraction goals (e.g., shared method signatures, boilerplate).
-3. **Synthesize**: It simulates the findings of a Study Agent to create a formalized pattern.
-4. **Generate**: If a `--target` is provided, it uses the synthesis to produce a new code snippet that matches the existing architectural symmetry of your project.
+1. **Scan**: The Governor looks for files ending in common suffixes like `Service`, `Repository`, or `Controller`.
+2. **Orchestrate**: The Governor delegates a study request to a **Study Agent** to extract structural traits and cross-language symmetry.
+3. **Synthesize**: A **Synthesis Agent** formalizes the raw findings into a pattern definition with core constraints.
+4. **Generate**: If a `--target` is provided, it uses the formalized synthesis to produce a new code snippet that matches the existing architectural symmetry of your project.

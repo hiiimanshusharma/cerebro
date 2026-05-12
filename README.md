@@ -16,11 +16,11 @@ Cerebro treats pattern discovery as an orchestration problem. It doesn't just lo
 
 Cerebro is organized into a core engine and a plugin-ready architecture:
 
-- **`cerebro.core.analyzer`**: The Discovery Engine. It identifies potential patterns and orchestrates the study requests.
-- **`cerebro.core.generator`**: The Synthesis Engine. It transforms synthesized patterns into concrete code.
+- **`cerebro.core.governor`**: The Central Orchestrator. Manages the full lifecycle from Discovery to Generation, orchestrating specialized agents (`StudyAgent` and `SynthesisAgent`) to perform agentic synthesis.
+- **`cerebro.core.generator`**: The Synthesis Engine. Transforms formalized patterns into concrete code.
 - **`cerebro.core.validator`**: Ensures generated code adheres to the synthesized pattern constraints.
 - **`cerebro.core.store`**: Manages the persistence of synthesized patterns.
-- **`cerebro.cli`**: The primary interface for interacting with the orchestrator.
+- **`cerebro.cli`**: The primary interface for interacting with the Governor.
 
 ## 🛠️ Supported Patterns
 
